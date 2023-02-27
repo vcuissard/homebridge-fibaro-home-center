@@ -150,11 +150,12 @@ export class FibaroHC implements DynamicPlatformPlugin {
   }
 
   LoadAccessories(devices, rooms) {
-    this.log.info('Loading accessories');
+    this.log.info('Loading F accessories');
     devices.map((s, i, a) => {
       if (s.visible === true && !s.name.startsWith('_')) {
         if (rooms !== null) {
           // patch device name
+	  this.log.debug('Rooms not null');
           const room = rooms.find(r => r.id === s.roomID);
           s.name = s.name + ' - ' + ((room !== null && room !== undefined) ? room.name : 'no-room');
         }
